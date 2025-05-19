@@ -22,7 +22,7 @@ An intelligent Selenium-based agent that logs into LinkedIn, searches for people
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/linkedin-auto-connect.git
+git clone https://github.com/Shine-5705/Connect_over_LinkedIN.git
 cd linkedin-auto-connect
 ```
 
