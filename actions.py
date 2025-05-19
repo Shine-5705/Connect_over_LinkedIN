@@ -1,12 +1,8 @@
 import time
-import os
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 
 def scroll_and_collect_profiles(driver, log_path="profile_links.log"):
-    # Ensure a fresh log file each time
-    if os.path.exists(log_path):
-        os.remove(log_path)
     profile_links = set()
     last_height = driver.execute_script("return document.body.scrollHeight")
     
@@ -38,26 +34,36 @@ def visit_profiles_and_connect(driver, profile_links):
             driver.get(link)
             time.sleep(3)
 
+            # Already connected check
             try:
-                connect_btn = driver.find_element(By.XPATH, "//button[contains(., 'Connect')]")
-                connect_btn.click()
-                time.sleep(1)
-                print(f"✅ Connected via direct button: {link}")
+                driver.find_element(By.XPATH, "//span[text()='Message']")
+                print(f"🔄 Already connected with: {link}")
                 continue
             except NoSuchElementException:
                 pass
 
+            # Try direct Connect button
             try:
-                more_btn = driver.find_element(By.XPATH, "//button[contains(., 'More')]")
+                connect_btn = driver.find_element(By.XPATH, "//button[.//span[text()='Connect']]")
+                connect_btn.click()
+                print(f"✅ Connected via direct button: {link}")
+                time.sleep(2)
+                continue
+            except NoSuchElementException:
+                pass
+
+            # Try through More dropdown
+            try:
+                more_btn = driver.find_element(By.XPATH, "//button[span[text()='More'] or @aria-label='More actions']")
                 more_btn.click()
                 time.sleep(1)
-                connect_in_menu = driver.find_element(By.XPATH, "//span[text()='Connect']/ancestor::button")
-                connect_in_menu.click()
+                dropdown_connect = driver.find_element(By.XPATH, "//span[text()='Connect']/ancestor::div[contains(@class, 'artdeco-dropdown__item')]")
+                dropdown_connect.click()
                 print(f"✅ Connected via More menu: {link}")
             except NoSuchElementException:
-                print(f"❌ Connect not found on: {link}")
+                print(f"❌ Connect option not found on: {link}")
             except ElementClickInterceptedException:
-                print(f"⚠️ Could not click Connect for: {link}")
+                print(f"⚠️ Click intercepted for: {link}")
 
         except Exception as e:
             print(f"⚠️ Error visiting {link}: {e}")

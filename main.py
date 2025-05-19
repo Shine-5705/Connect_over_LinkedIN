@@ -22,5 +22,5 @@ if __name__ == "__main__":
             #scroll_and_click_buttons(driver)
             profile_links = scroll_and_collect_profiles(driver)
 
-# Visit and connect
+            # Visit and connect
             visit_profiles_and_connect(driver, profile_links)
