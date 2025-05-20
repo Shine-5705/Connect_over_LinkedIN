@@ -2,3 +2,4 @@ selenium==4.21.0
 python-dotenv==1.0.1
 webdriver-manager 
 streamlit==1.34.0
+undetected-chromedriver==3.5.5
