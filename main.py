@@ -5,7 +5,11 @@ from search_fill import fill_search_bar
 from filters import apply_filters
 from connect_follow import scroll_and_click_buttons
 from actions import scroll_and_collect_profiles, visit_profiles_and_connect
+#if you want to run it headless
 
+# from driver import get_driver
+
+# driver = get_driver()
 
 if __name__ == "__main__":
     load_dotenv("config.env")
