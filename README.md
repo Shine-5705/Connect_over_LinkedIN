@@ -21,7 +21,7 @@ A powerful Selenium-based LinkedIn automation agent, now wrapped in a sleek **St
 
 ## 📺 New: Streamlit UI for Seamless Control
 
-![Streamlit Screenshot](https://github.com/Shine-5705/Connect_over_LinkedIN/assets/screenshot.png)
+![Streamlit Screenshot](https://github.com/Shine-5705/Connect_over_LinkedIN/blob/main/assets/image.png)
 
 ---
 
