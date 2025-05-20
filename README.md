@@ -1,90 +1,111 @@
-# LinkedIn Auto Connect Agent 🤖
+# LinkedIn Auto Connect Agent 🤖 + Streamlit UI 🚀
 
-An intelligent Selenium-based agent that logs into LinkedIn, searches for people based on configurable criteria, applies multiple filters, scrolls through search results, collects profile links, and automatically sends connection requests.
+A powerful Selenium-based LinkedIn automation agent, now wrapped in a sleek **Streamlit interface**. This tool logs into LinkedIn, lets you **search dynamically**, apply filters, **auto-connect with relevant people**, and keeps a log — all from a friendly browser interface.
 
-## 💡 Features
+## 🎯 What This Does
 
-- Logs in using secure credentials stored in `.env`.
-- Accepts search term from user input in `main.py`.
-- Applies advanced filters like:
-  - People
-  - Actively Hiring (with job titles)
-  - Locations
-  - Current Companies
-- Scrolls and extracts all profile URLs from the result page.
-- Visits each profile and:
-  - Clicks `Connect` if available directly.
-  - Opens the `More` menu and selects `Connect` if necessary.
-- Saves all visited profile links to a fresh log file for each run.
+- ✅ Logs in securely with your LinkedIn credentials (from `.env` or UI)
+- 🔍 Accepts dynamic **search input** via Streamlit
+- 🧠 Applies smart filters:
+  - **People**
+  - **Actively Hiring** (with custom job titles)
+  - **Locations**
+  - **Current Companies**
+- 📜 Scrolls the results page, logs profile URLs
+- 🤝 Visits each profile and sends connection requests:
+  - Clicks `Connect` directly if visible
+  - Or opens the `More` menu and selects `Connect`
+- 📝 Saves visited profile links in a timestamped log file
 
-## 🛠️ Setup
+---
 
-### 1. Clone the Repository
+## 📺 New: Streamlit UI for Seamless Control
+
+![Streamlit Screenshot](https://github.com/Shine-5705/Connect_over_LinkedIN/assets/screenshot.png)
+
+---
+
+## ⚙️ Setup
+
+### 1. Clone the Repo
 
 ```bash
 git clone https://github.com/Shine-5705/Connect_over_LinkedIN.git
 cd Connect_over_LinkedIN
 ```
 
-### 2. Install Dependencies
-
-Create a virtual environment and install requirements:
+### 2. Create Virtual Environment & Install Dependencies
 
 ```bash
 python -m venv venv
-venv\Scripts\activate      # On Windows
+venv\Scripts\activate   # On Windows
 pip install -r requirements.txt
 ```
 
-### 3. Configure Environment
+### 3. Add Your Credentials
 
-Create a `.env` file (or `config.env`) in the root directory:
+Create a file called `.env` or `config.env` in the project root:
 
 ```env
 LINKEDIN_EMAIL=your_email@example.com
 LINKEDIN_PASSWORD=your_password
-APPLY_PEOPLE_FILTER=True
-ACTIVELY_HIRING_VALUES=Data Scientist,Machine Learning Engineer
-LOCATIONS=India,United States
-CURRENT_COMPANIES=Google,Microsoft
 ```
 
-> ✅ Use commas to separate multiple values.
+> Credentials are safely stored using `python-dotenv`. No hardcoding in scripts.
 
-## 🚀 How to Run
+---
 
-1. Make sure `chromedriver` is installed and in your PATH.
-2. Run the automation:
+## 🧑‍💻 How to Use
+
+Launch the Streamlit app:
 
 ```bash
-python main.py
+streamlit run app.py
 ```
 
-You will be prompted to enter a **name or position** to search for.
+Then, enter:
+
+- Your LinkedIn login details
+- Search term (e.g., "Data Scientist")
+- Filter values (Actively Hiring titles, Locations, Companies)
+
+Click **Start Automation** and let the bot handle everything!
+
+---
 
 ## 📁 Project Structure
 
 ```
-linkedin-auto-connect/
+Connect_over_LinkedIN/
 │
-├── login.py          # Handles LinkedIn login
-├── filters.py        # Applies filters from config
-├── search_fill.py         # Searches user input
-├── actions.py       # Scrolls, logs, and connects to profiles
-├── main.py           # Entry point to orchestrate everything
-├── config.env        # Your environment variables
-└── requirements.txt  # Python dependencies
+├── login.py              # Logs into LinkedIn
+├── filters.py            # Applies user filters
+├── search_fill.py        # Searches user input
+├── actions.py            # Scrolls, collects links, connects to profiles
+├── main.py               # Entry point logic
+├── app.py                # 🌟 Streamlit frontend
+├── config.env            # Stores credentials
+├── requirements.txt      # Python dependencies
+└── logs/                 # Timestamped logs of visited profiles
 ```
-
-## 🧠 Notes
-
-- Make sure you're complying with [LinkedIn's terms of service](https://www.linkedin.com/legal/user-agreement) when using automation tools.
-- Introduce delays between actions to avoid detection or rate limiting.
-
-## 🛡 Disclaimer
-
-This project is intended for educational purposes only. Use at your own risk. The authors are not responsible for any misuse or account issues.
 
 ---
 
-Made with 🧠 + 🕸️ by Shine Gupta
+## 📌 Best Practices
+
+- Don't spam Connect — use this tool with intent and moderation.
+- Add delays (already built-in) to mimic human behavior.
+- Use a **fresh `.env`** for different accounts if needed.
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is for **educational and research purposes**. By using it, you agree to take full responsibility for how you automate LinkedIn.
+
+> ❌ Automating connections at scale can violate [LinkedIn's Terms of Service](https://www.linkedin.com/legal/user-agreement).
+
+---
+
+Made with 🧠 + 🕸️ by Shine Gupta  
+✨ Contributions welcome!
