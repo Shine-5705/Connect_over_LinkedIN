@@ -56,7 +56,6 @@ def visit_profiles_and_connect(driver, profile_links):
                 """)
                 print(f"✅ Connected directly: {link}")
                 time.sleep(4)
-                continue
 
             # Try via More > Connect
             used_more = driver.execute_script("""
